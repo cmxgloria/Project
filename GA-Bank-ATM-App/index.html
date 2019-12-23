@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>NAB ONLINEBANK</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header className="App-header">
+      <a href="https://www.nab.com.au" target="_blank">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuUSE6CyEDBBGoEdaQSARCNnJ85lBFm_Yr6p94dhZrDLYDziNZvA&s"
+          alt="logo"
+        />
+      </a>
+    </header>
+    <h1>ONLINE BANK</h1>
+    <div class="container">
+      <section class="saving">
+        <h3>SAVING</h3>
+        <h4>YOUR BALANCE IS ...</h4>
+        <div class="savingTotal">
+          Total: <span class="savingBalance">0</span>
+        </div>
+        $<input
+          style="background-color: aqua"
+          id="savingDeposit"
+          type="number"
+          value="number"
+        />
+        <button class="savingDeposit-btn">DEPOSIT</button>
+        <button class="savingWithdraw-btn">WITHDRAW</button>
+      </section>
+      <section class="check">
+        <h3>CHECKING</h3>
+        <h4>YOUR BALANCE IS ...</h4>
+        <div class="checkTotal">Total: <span class="checkBalance">0</span></div>
+        $<input
+          style="background-color: aqua "
+          id="checkDeposit"
+          type="number"
+          value="number"
+        />
+        <button class="checkDeposit-btn">DEPOSIT</button>
+        <button class="checkWithdraw-btn">WITHDRAW</button>
+      </section>
+
+      <script src="bank.js"></script>
+    </div>
+  </body>
+</html>
