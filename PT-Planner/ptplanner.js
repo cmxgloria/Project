@@ -21,35 +21,69 @@ var sandringham = [
   "Prahran",
   "Windsor"
 ];
+
 var trainNetwork = {
-  alamein,
-  glenWaverly,
-  sandringham
+  alamein: alamein,
+  glenWaverly: glenWaverly,
+  sandringham: sandringham
 };
+
+var sliceStops = function(originIndex, destinationInde)
+
 var trainTravel = function(origin, destination) {
   if (origin === destination) {
-    return "Origin and destination can not be the same";
+    console.error("Origin and destination can not be the same");
+    return;
   }
-  var lines = Object.keys(trainNetwork);
-  for (var line of lines) {
+  var originalObj;
+  var destinationObj;
+  for (const line in trainNetwork) {
     var findOriginIndex = trainNetwork[line].indexOf(origin);
     var findDestinationIndex = trainNetwork[line].indexOf(destination);
+    if (findOriginIndex !== -1) {
+      originalObj = { index: findOriginIndex, line: line };
+    }
+    if (findDestinationIndex !== -1) {
+      destinationObj = { index: findDestinationIndex, line: line };
+    }
   }
+  if (!originalObj || !destinationObj) {
+    console.error("Make sure you type the correct origin and destination");
+    return;
+  }
+  if (origin === "Richmond") {
+    var richmondIndex = trainNetwork[destinationObj.line].indexOf("Richmond");
+    var stops = [];
+    if (richmondIndex < destinationObj.index) {
+      stops = trainNetwork[destinationObj.line].slice(
+        richmondIndex,
+        destinationObj.index + 1
+      );
+    } else {
+      stops = trainNetwork[destinationObj.line].slice(
+        destinationObj.index,
+        richmondIndex + 1
+      ).reverse();
+    }
+    console.log(stops.join(" ----> "));
+  } else if (destination === "Richmond") {
+    var richmondIndex = trainNetwork[originalObj.line].indexOf("Richmond");
+    var stops = [];
+    if (richmondIndex < originalObj.index) {
+      stops = trainNetwork[originalObj.line].slice(
+        richmondIndex,
+        originalObj.index + 1
+      );
+    } else {
+      stops = trainNetwork[originalObj.line].slice(
+        originalObj.index,
+        richmondIndex + 1
+      ).reverse();
+    }
+    console.log(stops.join(" ----> "));
+  } else if (originalObj.line === destinationObj.line) {
 
-  // for (let i = 0; i < alamein.length; i++) {
-  //   var stops = alamein.indexOf(destination) - alamein.indexOf(start);
-  //   console.log(`You take ${stops} to get your destination.`);
-  // }
+  }
 };
-trainTravel();
-
-//   for (let j = 0; j < arr.length; j++) {
-//     var trainTravel = function(start, destination) {
-//       for (let i = 0; i < arr.length; i++) {
-//         var stops = arr.indexOf(destination) - arr.indexOf(start);
-//         console.log(`You take ${stops} to get your destination.`);
-//       }
-//     };
-//     trainTravel();
-//   }
-// };
+trainTravel("Richmond", "Tooronga");
+trainTravel("Tooronga", "Richmond");
