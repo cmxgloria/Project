@@ -59,6 +59,7 @@ var trainTravel = function(origin, destination) {
     var findOriginIndex = trainNetwork[line].indexOf(origin);
     var findDestinationIndex = trainNetwork[line].indexOf(destination);
     if (findOriginIndex !== -1) {
+      //found it, then store info to a object because it has two value "index and line name"
       originObj = { index: findOriginIndex, line: line };
     }
     if (findDestinationIndex !== -1) {
@@ -76,8 +77,10 @@ var trainTravel = function(origin, destination) {
       destinationObj.index,
       trainNetwork[destinationObj.line]
     );
-    
+
     printStops(stops);
+    console.log(`origin: ${origin} ; destination: ${destination}`);
+    console.log(stops.length-1 + " stops");
   } else if (destination === "Richmond") {
     var richmondIndex = trainNetwork[originObj.line].indexOf("Richmond");
     var stops = sliceStops(
@@ -85,8 +88,10 @@ var trainTravel = function(origin, destination) {
       richmondIndex,
       trainNetwork[originObj.line]
     );
-   
+
     printStops(stops);
+    console.log(`origin: ${origin}  ; destination: ${destination}`);
+    console.log(stops.length-1 + " stops");
   } else if (originObj.line === destinationObj.line) {
     var stops = sliceStops(
       originObj.index,
@@ -94,6 +99,7 @@ var trainTravel = function(origin, destination) {
       trainNetwork[originObj.line]
     );
     printStops(stops);
+    
   } else {
     // different lines
     var richmondInOriginIndex = trainNetwork[originObj.line].indexOf(
@@ -113,6 +119,9 @@ var trainTravel = function(origin, destination) {
       trainNetwork[destinationObj.line]
     );
     printStops(originStops, destinationStops);
+    var totalStops = originStops.length-1 + destinationStops.length-1;
+    console.log(`origin: ${originStops[0]}  ; destination: ${destinationStops[destinationStops.length -1]}`);
+    console.log(totalStops + " stops");
   }
 };
 trainTravel("Richmond", "Tooronga");
@@ -120,3 +129,17 @@ trainTravel("Tooronga", "Richmond");
 trainTravel("Glenferrie", "Windsor");
 trainTravel("Glenferrie", "Glenferrie");
 trainTravel("Flinder Street", "Heidelberg");
+
+//print out 
+Richmond ----> Kooyong ----> Tooronga
+ origin: Richmond ; destination: Tooronga
+ 2 stops
+ Tooronga ----> Kooyong ----> Richmond
+ origin: Tooronga  ; destination: Richmond
+ 2 stops
+ Glenferrie ----> Hawthorn ----> Burnley ----> East Richmond ----> Richmond
+                                                    || Richmond ----> South Yarra ----> Prahran ----> Windsor
+ origin: Glenferrie  ; destination: Windsor
+ 7 stops
+Origin and destination can not be the same
+Make sure you type the correct origin and destination
