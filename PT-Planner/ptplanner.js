@@ -76,17 +76,7 @@ var trainTravel = function(origin, destination) {
       destinationObj.index,
       trainNetwork[destinationObj.line]
     );
-    // var stops = [];
-    // if (richmondIndex < destinationObj.index) {
-    //   stops = trainNetwork[destinationObj.line].slice(
-    //     richmondIndex,
-    //     destinationObj.index + 1
-    //   );
-    // } else {
-    //   stops = trainNetwork[destinationObj.line]
-    //     .slice(destinationObj.index, richmondIndex + 1)
-    //     .reverse();
-    // }
+    
     printStops(stops);
   } else if (destination === "Richmond") {
     var richmondIndex = trainNetwork[originObj.line].indexOf("Richmond");
@@ -95,17 +85,7 @@ var trainTravel = function(origin, destination) {
       richmondIndex,
       trainNetwork[originObj.line]
     );
-    // var stops = [];
-    // if (richmondIndex < originObj.index) {
-    //   stops = trainNetwork[originObj.line].slice(
-    //     richmondIndex,
-    //     originObj.index + 1
-    //   );
-    // } else {
-    //   stops = trainNetwork[originObj.line]
-    //     .slice(originObj.index, richmondIndex + 1)
-    //     .reverse();
-    // }
+   
     printStops(stops);
   } else if (originObj.line === destinationObj.line) {
     var stops = sliceStops(
