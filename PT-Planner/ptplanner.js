@@ -129,3 +129,17 @@ trainTravel("Tooronga", "Richmond");
 trainTravel("Glenferrie", "Windsor");
 trainTravel("Glenferrie", "Glenferrie");
 trainTravel("Flinder Street", "Heidelberg");
+
+//print out 
+Richmond ----> Kooyong ----> Tooronga
+ origin: Richmond ; destination: Tooronga
+ 2 stops
+ Tooronga ----> Kooyong ----> Richmond
+ origin: Tooronga  ; destination: Richmond
+ 2 stops
+ Glenferrie ----> Hawthorn ----> Burnley ----> East Richmond ----> Richmond
+                                                    || Richmond ----> South Yarra ----> Prahran ----> Windsor
+ origin: Glenferrie  ; destination: Windsor
+ 7 stops
+Origin and destination can not be the same
+Make sure you type the correct origin and destination
